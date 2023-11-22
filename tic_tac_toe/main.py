@@ -12,16 +12,16 @@ pygame.display.set_icon(icon)
 is_game_active = True
 while is_game_active:
     pygame.draw.line(surface=screen, color='White',
-                     start_pos=(0, 198), end_pos=(600, 198),
+                     start_pos=(0, 200), end_pos=(600, 200),
                      width=5)
     pygame.draw.line(surface=screen, color='White',
-                     start_pos=(0, 396), end_pos=(600, 396),
+                     start_pos=(0, 400), end_pos=(600, 400),
                      width=5)
     pygame.draw.line(surface=screen, color='White',
-                     start_pos=(198, 0), end_pos=(198, 600),
+                     start_pos=(200, 0), end_pos=(200, 600),
                      width=5)
     pygame.draw.line(surface=screen, color='White',
-                     start_pos=(396, 0), end_pos=(396, 600),
+                     start_pos=(400, 0), end_pos=(400, 600),
                      width=5)
 
     pygame.display.update()
