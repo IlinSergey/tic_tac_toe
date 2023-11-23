@@ -3,29 +3,31 @@ import pygame
 
 pygame.init()
 
+# Инициализация и отрисовка поля
 screen = pygame.display.set_mode(size=(600, 600))
 pygame.display.set_caption('TIC TAC TO')
 icon = pygame.image.load('images/icon.png')
 pygame.display.set_icon(icon)
-screen.fill('White')
+background = pygame.image.load('images/background.png')
+screen.blit(source=background, dest=(0, 0))
 
 circle_image = pygame.image.load('images/circle.png')
 cross_image = pygame.image.load('images/cross.png')
 
 is_game_active = True
 while is_game_active:
-    pygame.draw.line(surface=screen, color='Black',
-                     start_pos=(0, 200), end_pos=(600, 200),
-                     width=5)
-    pygame.draw.line(surface=screen, color='Black',
-                     start_pos=(0, 400), end_pos=(600, 400),
-                     width=5)
-    pygame.draw.line(surface=screen, color='Black',
-                     start_pos=(200, 0), end_pos=(200, 600),
-                     width=5)
-    pygame.draw.line(surface=screen, color='Black',
-                     start_pos=(400, 0), end_pos=(400, 600),
-                     width=5)
+    # pygame.draw.line(surface=screen, color='Black',
+    #                  start_pos=(0, 200), end_pos=(600, 200),
+    #                  width=5)
+    # pygame.draw.line(surface=screen, color='Black',
+    #                  start_pos=(0, 400), end_pos=(600, 400),
+    #                  width=5)
+    # pygame.draw.line(surface=screen, color='Black',
+    #                  start_pos=(200, 0), end_pos=(200, 600),
+    #                  width=5)
+    # pygame.draw.line(surface=screen, color='Black',
+    #                  start_pos=(400, 0), end_pos=(400, 600),
+    #                  width=5)
 
     pygame.display.update()
 
@@ -52,5 +54,5 @@ while is_game_active:
                 screen.blit(source=figure, dest=(3, 403))
             elif 200 < position[0] < 400 and 400 < position[1] < 600:  # Поле 8
                 screen.blit(source=figure, dest=(203, 403))
-            elif 400 < position[0] < 600 and 400 < position[1] < 600:  # Поле
+            elif 400 < position[0] < 600 and 400 < position[1] < 600:  # Поле 9
                 screen.blit(source=figure, dest=(403, 403))
