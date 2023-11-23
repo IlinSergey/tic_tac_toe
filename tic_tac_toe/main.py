@@ -17,9 +17,16 @@ text = font.render('Ходы закончилиcь!', True, pygame.Color('red'))
 circle_image = pygame.image.load('images/circle.png')
 cross_image = pygame.image.load('images/cross.png')
 
-is_game_active = True
+figures = {
+    'X': cross_image,
+    'O': circle_image,
+}
+figure = figures['O']
 
 fields = dict()
+
+
+is_game_active = True
 
 while is_game_active:
 
@@ -34,7 +41,6 @@ while is_game_active:
             position = pygame.mouse.get_pos()
             if len(fields) == 9:
                 screen.blit(source=text, dest=(20, 270))
-            figure = cross_image
             if 0 < position[0] < 200 and 0 < position[1] < 200 and '1' not in fields:  # Поле 1
                 screen.blit(source=figure, dest=(3, 3))
                 fields['1'] = True
@@ -62,3 +68,8 @@ while is_game_active:
             elif 400 < position[0] < 600 and 400 < position[1] < 600 and '9' not in fields:  # Поле 9
                 screen.blit(source=figure, dest=(403, 403))
                 fields['9'] = True
+
+            if figure == figures['O']:
+                figure = figures['X']
+            elif figure == figures['X']:
+                figure = figures['O']
