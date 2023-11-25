@@ -103,6 +103,7 @@ def change_figure():
 
 
 is_game_active = True
+is_game_over = False
 
 while is_game_active:
 
@@ -110,7 +111,7 @@ while is_game_active:
 
     for event in pygame.event.get():
 
-        if figure == figures['X']:
+        if figure == figures['X'] and not is_game_over:
             step = computer_step()
             drow_figure(figure=figure, field=step)
             fields[step] = current_player(figure)
@@ -123,47 +124,50 @@ while is_game_active:
         if event.type == pygame.MOUSEBUTTONDOWN:
             position = pygame.mouse.get_pos()
 
-            if 0 < position[0] < 200 and 0 < position[1] < 200 and not fields['1']:  # Поле 1
-                drow_figure(figure, field='1')
-                fields['1'] = current_player(figure)
-                change_figure()
-            elif 200 < position[0] < 400 and 0 < position[1] < 200 and not fields['2']:  # Поле 2
-                drow_figure(figure, field='2')
-                fields['2'] = current_player(figure)
-                change_figure()
-            elif 400 < position[0] < 600 and 0 < position[1] < 200 and not fields['3']:  # Поле 3
-                drow_figure(figure, field='3')
-                fields['3'] = current_player(figure)
-                change_figure()
-            elif 0 < position[0] < 200 and 200 < position[1] < 400 and not fields['4']:  # Поле 4
-                drow_figure(figure, field='4')
-                fields['4'] = current_player(figure)
-                change_figure()
-            elif 200 < position[0] < 400 and 200 < position[1] < 400 and not fields['5']:  # Поле 5
-                drow_figure(figure, field='5')
-                fields['5'] = current_player(figure)
-                change_figure()
-            elif 400 < position[0] < 600 and 200 < position[1] < 400 and not fields['6']:  # Поле 6
-                drow_figure(figure, field='6')
-                fields['6'] = current_player(figure)
-                change_figure()
-            elif 0 < position[0] < 200 and 400 < position[1] < 600 and not fields['7']:  # Поле 7
-                drow_figure(figure, field='7')
-                fields['7'] = current_player(figure)
-                change_figure()
-            elif 200 < position[0] < 400 and 400 < position[1] < 600 and not fields['8']:  # Поле 8
-                drow_figure(figure, field='8')
-                fields['8'] = current_player(figure)
-                change_figure()
-            elif 400 < position[0] < 600 and 400 < position[1] < 600 and not fields['9']:  # Поле 9
-                drow_figure(figure, field='9')
-                fields['9'] = current_player(figure)
-                change_figure()
+            if not is_game_over:
+                if 0 < position[0] < 200 and 0 < position[1] < 200 and not fields['1']:  # Поле 1
+                    drow_figure(figure, field='1')
+                    fields['1'] = current_player(figure)
+                    change_figure()
+                elif 200 < position[0] < 400 and 0 < position[1] < 200 and not fields['2']:  # Поле 2
+                    drow_figure(figure, field='2')
+                    fields['2'] = current_player(figure)
+                    change_figure()
+                elif 400 < position[0] < 600 and 0 < position[1] < 200 and not fields['3']:  # Поле 3
+                    drow_figure(figure, field='3')
+                    fields['3'] = current_player(figure)
+                    change_figure()
+                elif 0 < position[0] < 200 and 200 < position[1] < 400 and not fields['4']:  # Поле 4
+                    drow_figure(figure, field='4')
+                    fields['4'] = current_player(figure)
+                    change_figure()
+                elif 200 < position[0] < 400 and 200 < position[1] < 400 and not fields['5']:  # Поле 5
+                    drow_figure(figure, field='5')
+                    fields['5'] = current_player(figure)
+                    change_figure()
+                elif 400 < position[0] < 600 and 200 < position[1] < 400 and not fields['6']:  # Поле 6
+                    drow_figure(figure, field='6')
+                    fields['6'] = current_player(figure)
+                    change_figure()
+                elif 0 < position[0] < 200 and 400 < position[1] < 600 and not fields['7']:  # Поле 7
+                    drow_figure(figure, field='7')
+                    fields['7'] = current_player(figure)
+                    change_figure()
+                elif 200 < position[0] < 400 and 400 < position[1] < 600 and not fields['8']:  # Поле 8
+                    drow_figure(figure, field='8')
+                    fields['8'] = current_player(figure)
+                    change_figure()
+                elif 400 < position[0] < 600 and 400 < position[1] < 600 and not fields['9']:  # Поле 9
+                    drow_figure(figure, field='9')
+                    fields['9'] = current_player(figure)
+                    change_figure()
 
-            if len(fields) > 5:  # Проверка выигрыша
-                result = check_win()
-                if result:
-                    screen.blit(source=win_text[result], dest=(20, 270))
+                if len(fields) > 5:  # Проверка выигрыша
+                    result = check_win()
+                    if result:
+                        screen.blit(source=win_text[result], dest=(20, 270))
+                        is_game_over = True
 
-            if all(fields.values()):  # Проверка на количество свободных полей
-                screen.blit(source=text, dest=(20, 270))
+                if all(fields.values()):  # Проверка на количество свободных полей
+                    screen.blit(source=text, dest=(20, 270))
+                    is_game_over = True
