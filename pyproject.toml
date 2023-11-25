@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "tic-tac-toe"
 version = "0.1.0"
-description = ""
+description = "Tic-Tac-Toe game"
 authors = ["Sergey Ilin <ilin_sergey90@mail.ru>"]
 readme = "README.md"
 
