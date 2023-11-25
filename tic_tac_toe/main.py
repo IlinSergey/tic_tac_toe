@@ -73,7 +73,7 @@ def current_player(figure) -> str:
 
 
 def computer_step() -> str:
-    sleep(0.5)
+    sleep(0.2)
     free_fields = [field for field in fields.keys() if fields[field] is False]
     step = choice(free_fields)
     return step
@@ -116,6 +116,11 @@ while is_game_active:
             drow_figure(figure=figure, field=step)
             fields[step] = current_player(figure)
             change_figure()
+            if len(fields) > 5:  # Проверка выигрыша
+                result = check_win()
+                if result:
+                    screen.blit(source=win_text[result], dest=(20, 270))
+                    is_game_over = True
 
         if event.type == pygame.QUIT:
             is_game_active = False
@@ -168,6 +173,6 @@ while is_game_active:
                         screen.blit(source=win_text[result], dest=(20, 270))
                         is_game_over = True
 
-                if all(fields.values()):  # Проверка на количество свободных полей
+                if all(fields.values()) and not is_game_over:  # Проверка на количество свободных полей
                     screen.blit(source=text, dest=(20, 270))
                     is_game_over = True
