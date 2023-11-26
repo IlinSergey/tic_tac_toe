@@ -41,18 +41,18 @@ players = {
 
 
 # Право первого хода, переключение игроков через переменную
-current_figure = 'user'
+current_user = 'user'
 
 
 def change_player() -> None:
     '''
     Смена игрока
     '''
-    global current_figure
-    if current_figure == 'user':
-        current_figure = 'computer'
-    elif current_figure == 'computer':
-        current_figure = 'user'
+    global current_user
+    if current_user == 'user':
+        current_user = 'computer'
+    elif current_user == 'computer':
+        current_user = 'user'
 
 
 def main():
@@ -63,12 +63,12 @@ def main():
         pygame.display.update()
         for event in pygame.event.get():
 
-            figure = figures[players[current_figure]]
+            figure = figures[players[current_user]]
 
-            if current_figure == 'computer' and not is_game_over:
+            if current_user == 'computer' and not is_game_over:
                 step = computer_step(fields=FIELDS)
                 drow_figure(figure=figure, field=step, screen=screen)
-                FIELDS[step] = players[current_figure]
+                FIELDS[step] = players[current_user]
                 change_player()
                 result = check_win(victorie_lines=VICTORIE_LINES, fields=FIELDS)
                 if result:
@@ -84,39 +84,39 @@ def main():
                 if not is_game_over:
                     if 0 < position[0] < 200 and 0 < position[1] < 200 and not FIELDS['1']:  # Поле 1
                         drow_figure(figure, field='1', screen=screen)
-                        FIELDS['1'] = players[current_figure]
+                        FIELDS['1'] = players[current_user]
                         change_player()
                     elif 200 < position[0] < 400 and 0 < position[1] < 200 and not FIELDS['2']:  # Поле 2
                         drow_figure(figure, field='2', screen=screen)
-                        FIELDS['2'] = players[current_figure]
+                        FIELDS['2'] = players[current_user]
                         change_player()
                     elif 400 < position[0] < 600 and 0 < position[1] < 200 and not FIELDS['3']:  # Поле 3
                         drow_figure(figure, field='3', screen=screen)
-                        FIELDS['3'] = players[current_figure]
+                        FIELDS['3'] = players[current_user]
                         change_player()
                     elif 0 < position[0] < 200 and 200 < position[1] < 400 and not FIELDS['4']:  # Поле 4
                         drow_figure(figure, field='4', screen=screen)
-                        FIELDS['4'] = players[current_figure]
+                        FIELDS['4'] = players[current_user]
                         change_player()
                     elif 200 < position[0] < 400 and 200 < position[1] < 400 and not FIELDS['5']:  # Поле 5
                         drow_figure(figure, field='5', screen=screen)
-                        FIELDS['5'] = players[current_figure]
+                        FIELDS['5'] = players[current_user]
                         change_player()
                     elif 400 < position[0] < 600 and 200 < position[1] < 400 and not FIELDS['6']:  # Поле 6
                         drow_figure(figure, field='6', screen=screen)
-                        FIELDS['6'] = players[current_figure]
+                        FIELDS['6'] = players[current_user]
                         change_player()
                     elif 0 < position[0] < 200 and 400 < position[1] < 600 and not FIELDS['7']:  # Поле 7
                         drow_figure(figure, field='7', screen=screen)
-                        FIELDS['7'] = players[current_figure]
+                        FIELDS['7'] = players[current_user]
                         change_player()
                     elif 200 < position[0] < 400 and 400 < position[1] < 600 and not FIELDS['8']:  # Поле 8
                         drow_figure(figure, field='8', screen=screen)
-                        FIELDS['8'] = players[current_figure]
+                        FIELDS['8'] = players[current_user]
                         change_player()
                     elif 400 < position[0] < 600 and 400 < position[1] < 600 and not FIELDS['9']:  # Поле 9
                         drow_figure(figure, field='9', screen=screen)
-                        FIELDS['9'] = players[current_figure]
+                        FIELDS['9'] = players[current_user]
                         change_player()
 
                     result = check_win(victorie_lines=VICTORIE_LINES, fields=FIELDS)

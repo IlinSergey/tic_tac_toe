@@ -22,11 +22,11 @@ FIELDS = {
     '9': False,
 }
 
-CIRCLE_IMAGE = 'tic_tac_toe/images/circle.png'
-CROSS_IMAGE = 'tic_tac_toe/images/cross.png'
-BACKGROUND_IMAGE = 'tic_tac_toe/images/background.png'
+CIRCLE_IMAGE = 'images/circle.png'
+CROSS_IMAGE = 'images/cross.png'
+BACKGROUND_IMAGE = 'images/background.png'
 
-FONT = 'tic_tac_toe/fonts/cuyabra-Regular.ttf'
+FONT = 'fonts/cuyabra-Regular.ttf'
 FONT_SIZE = 60
 
 GAME_OVER_TEXT = 'GAME OVER!!!'
