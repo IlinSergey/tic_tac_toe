@@ -29,17 +29,6 @@ def computer_step(fields: dict[str: bool | str]) -> str:
     return choised_field
 
 
-def current_player(figure: Surface, figures) -> str:
-    '''
-    На основании значения в переменной figure возвращает строковое
-    представление текущей фигуры
-    '''
-    if figure == figures['O']:
-        return 'O'
-    else:
-        return 'X'
-
-
 def drow_figure(figure: Surface, field: str, screen: Surface) -> None:
     '''
     Отрисовывает фигуру на поле в необходимых координатах
