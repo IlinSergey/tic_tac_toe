@@ -4,7 +4,7 @@ from time import sleep
 from pygame.surface import Surface
 
 
-def check_win(victorie_lines: list[list[str]], fields: dict[str: bool | str]) -> str | bool:
+def check_win(victorie_lines: list[list[str]], fields: dict[str: bool | str]) -> str | None:
     '''
     Проверяет существут ли выигрышная комбинация на поле
     Возвращает строковое представление выигрывшего знака либо
@@ -16,7 +16,7 @@ def check_win(victorie_lines: list[list[str]], fields: dict[str: bool | str]) ->
         elif fields[line[0]] == 'O' and fields[line[1]] == 'O' and fields[line[2]] == 'O':
             return 'O'
         else:
-            False
+            pass
 
 
 def computer_step(fields: dict[str: bool | str]) -> str:

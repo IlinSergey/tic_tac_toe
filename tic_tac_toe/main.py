@@ -31,7 +31,7 @@ game_over_text = font.render(GAME_OVER_TEXT, True, pygame.Color('red'))
 win_text = {
     'X': font.render('Победа игрока "X"!', True, pygame.Color('red')),
     'O': font.render('Победа игрока "O"!', True, pygame.Color('red')),
-    }
+}
 
 #  Список игроков и их фигуры
 players = {
@@ -71,6 +71,7 @@ def main():
                 FIELDS[step] = players[current_user]
                 change_player()
                 result = check_win(victorie_lines=VICTORIE_LINES, fields=FIELDS)
+                print(result)
                 if result:
                     screen.blit(source=win_text[result], dest=(20, 270))
                     is_game_over = True
